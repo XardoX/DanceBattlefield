@@ -21,7 +21,7 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         Debug.Log("Play!");
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Main");
     }
 
     public void Quit()
