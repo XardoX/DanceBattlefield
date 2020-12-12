@@ -6,7 +6,7 @@ using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
-    public int currentDance;
+    public static int currentDance;
     public int health;
     public float timeToRecovery = 1f;
     [SerializeField]
@@ -22,10 +22,10 @@ public class Player : MonoBehaviour
     private bool _moved;
     private float _danceTime;
     private float _moveDistance;
-    private bool _defence;
-    private bool _attack;
-    private bool _jump;
-    private bool _earnScore;
+    public static bool _defence;
+    public static bool _attack;
+    public static bool _jump;
+    public static bool _earnScore;
     private bool _immortality;
     public static Player instance;
     private void Awake() 
