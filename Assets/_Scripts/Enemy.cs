@@ -77,6 +77,11 @@ public class Enemy : MonoBehaviour
         Debug.Log("Enemy Died");
     }
 
+    public void EnemyCooldown()
+    {
+        _moveTime += moveSettings.cooldown * 2;
+    }
+
     [System.Serializable]
     private class EnemyMove
     {

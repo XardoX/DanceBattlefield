@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
+using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
-    public int[] testList;
     public int health;
+    public float timeToRecovery = 1f;
     [SerializeField]
     private PlayerMove moveSettings = default;
     [SerializeField]
     private DanceTypes dance = default;
+    private SpriteRenderer _renderer;
     private float _time;
+    private float _recoveryTime;
     private bool _moved;
     private float _danceTime;
     private float _moveDistance;
@@ -19,6 +22,7 @@ public class Player : MonoBehaviour
     private bool _attack;
     private bool _jump;
     private bool _earnScore;
+    private bool _immortality;
     public static Player instance;
     private void Awake() 
     {
@@ -26,6 +30,7 @@ public class Player : MonoBehaviour
         {
             instance = this;
         } else Destroy(this);
+        _renderer = GetComponent<SpriteRenderer>();
     }
 
     void Start()
@@ -42,6 +47,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if(_immortality)
+        {
+            _recoveryTime -= Time.deltaTime;
+            if (_recoveryTime <= 0f) _immortality = false;
+        }
         Move();
         Dance();
     }
@@ -66,7 +76,8 @@ public class Player : MonoBehaviour
                     {
                         moveSettings.nextPoint.position += new Vector3(Input.GetAxisRaw("Horizontal") *_moveDistance, 0f,0f);
                         _time = moveSettings.cooldown;
-                        _moved = true;  
+                        _moved = true; 
+                        GameManager.instance.Shake();
                         if(_earnScore)
                         {
                             GameManager.instance.AddScore(100);
@@ -79,6 +90,7 @@ public class Player : MonoBehaviour
                         moveSettings.nextPoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical")*_moveDistance,0f);
                         _time = moveSettings.cooldown; 
                         _moved = true; 
+                        GameManager.instance.Shake();
                         if(_earnScore)
                         {
                             GameManager.instance.AddScore(100);
@@ -171,14 +183,20 @@ public class Player : MonoBehaviour
         {
 
         }
-        
     }
     private void LoseHealth()
     {
-        health--;
-        if(health <= 0)
+        if(!_immortality)
         {
-            GameManager.instance.Defeat();
+            _immortality = true;
+            _recoveryTime = timeToRecovery;
+            health--;
+            UIManager.instance.SetPlayerLives(health);
+            if(health <= 0)
+            {
+                GameManager.instance.Defeat();
+            }
+            _renderer.DOFade(0.5f, 0.2f).SetLoops(10, LoopType.Yoyo);
         }
     }
     private void OnTriggerEnter2D(Collider2D other) 
@@ -191,6 +209,7 @@ public class Player : MonoBehaviour
                 //addpoints
             }else 
             {
+                other.GetComponent<Enemy>().EnemyCooldown();
                 if(!_defence)
                 {
                     LoseHealth();
