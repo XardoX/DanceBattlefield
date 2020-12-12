@@ -946,7 +946,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 86ca1d98364fa304d9cb1e55aa22a0ae, type: 3}
     m_FontSize: 32
     m_FontStyle: 2
     m_BestFit: 0
@@ -1024,7 +1024,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 86ca1d98364fa304d9cb1e55aa22a0ae, type: 3}
     m_FontSize: 32
     m_FontStyle: 2
     m_BestFit: 0
@@ -1265,7 +1265,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 86ca1d98364fa304d9cb1e55aa22a0ae, type: 3}
     m_FontSize: 32
     m_FontStyle: 2
     m_BestFit: 0
@@ -1446,7 +1446,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 86ca1d98364fa304d9cb1e55aa22a0ae, type: 3}
     m_FontSize: 32
     m_FontStyle: 2
     m_BestFit: 0
@@ -1909,7 +1909,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 86ca1d98364fa304d9cb1e55aa22a0ae, type: 3}
     m_FontSize: 32
     m_FontStyle: 2
     m_BestFit: 0
@@ -1987,7 +1987,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 86ca1d98364fa304d9cb1e55aa22a0ae, type: 3}
     m_FontSize: 36
     m_FontStyle: 0
     m_BestFit: 0
@@ -1999,8 +1999,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Toucan's Diary:\n\n\nPawe\u0142 Ba\u0142dowski\n\nJerzy Gab\n\nAnna Deckert\n\nDamian
-    Bomba\u0142a\n\n<muzyk>"
+  m_Text: "[Pu\u015B\u0107 odrobin\u0119 cyberfunku]\n\n\nPawe\u0142 Ba\u0142dowski\n\nJerzy
+    Gab\n\nAnna Deckert\n\nDamian Bomba\u0142a"
 --- !u!222 &1810737259
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2218,7 +2218,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 86ca1d98364fa304d9cb1e55aa22a0ae, type: 3}
     m_FontSize: 48
     m_FontStyle: 0
     m_BestFit: 0
@@ -2482,7 +2482,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 86ca1d98364fa304d9cb1e55aa22a0ae, type: 3}
     m_FontSize: 32
     m_FontStyle: 2
     m_BestFit: 0
