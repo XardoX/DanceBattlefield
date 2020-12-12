@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public Color[] tilesColors;
+    private int _score;
     private void Awake() 
     {
         if(instance == null)
@@ -24,5 +25,16 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Defeat()
+    {
+
+    }
+
+    public void AddScore(int value)
+    {
+        _score += value;
+        UIManager.instance.SetScore(_score);
     }
 }

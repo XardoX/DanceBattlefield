@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class DanceTile : MonoBehaviour
 {
-    public float colorCooldown;
+    public Vector2 colorCooldown;
     private SpriteRenderer _renderer;
     private float _colorTime;
 
@@ -21,8 +21,8 @@ public class DanceTile : MonoBehaviour
         if(_colorTime < 0)
         {
             Color _color = GameManager.instance.tilesColors[Random.Range(0, GameManager.instance.tilesColors.Length)];
-            _renderer.DOColor(_color, colorCooldown);
-            _colorTime = colorCooldown;
+            _renderer.DOColor(_color, Random.Range(colorCooldown.x, colorCooldown.y));
+            _colorTime = colorCooldown.y;
         }
     }
 }
