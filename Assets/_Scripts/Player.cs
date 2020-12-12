@@ -226,8 +226,20 @@ public class Player : MonoBehaviour
                     DefenceDance(false);
                 }
             }
-            
+        } else if(other.CompareTag("Laser"))
+        {
+            if(other.GetComponent<Laser>().isActive)
+            {
+                if(!_defence)
+                {
+                    LoseHealth();
+                }else
+                {
+                    DefenceDance(false);
+                }
+            }
         }
+
     }
     
 
