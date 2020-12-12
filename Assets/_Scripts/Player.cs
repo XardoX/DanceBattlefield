@@ -6,13 +6,17 @@ using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
+    public int currentDance;
     public int health;
     public float timeToRecovery = 1f;
     [SerializeField]
     private Move moveSettings = default;
     [SerializeField]
     private DanceTypes dance = default;
+    [SerializeField]
+    private Animator _anim = default;
     private SpriteRenderer _renderer;
+    public int nextDance;
     private float _time;
     private float _recoveryTime;
     private bool _moved;
@@ -78,6 +82,7 @@ public class Player : MonoBehaviour
                         _time = moveSettings.cooldown;
                         _moved = true; 
                         GameManager.instance.Shake();
+                        SetDance(nextDance);
                         if(_earnScore)
                         {
                             GameManager.instance.AddScore(100);
@@ -91,6 +96,7 @@ public class Player : MonoBehaviour
                         _time = moveSettings.cooldown; 
                         _moved = true; 
                         GameManager.instance.Shake();
+                        SetDance(nextDance);
                         if(_earnScore)
                         {
                             GameManager.instance.AddScore(100);
@@ -108,12 +114,13 @@ public class Player : MonoBehaviour
         if(_danceTime <= 0f)
         {
             dance.nextDances.Enqueue(Random.Range(0,4));
-            SetDance(dance.nextDances.Dequeue());
+            nextDance = dance.nextDances.Dequeue();
             _danceTime = dance.danceTime;
         }
     }
     private void SetDance(int danceID)
     {
+        currentDance = danceID;
         DefenceDance(false);
         AttackDance(false);
         JumpDance(false);
@@ -143,7 +150,7 @@ public class Player : MonoBehaviour
         _defence = isActive;
         if(isActive)
         {
-            //animacja albo efekt
+            _anim.SetTrigger("Defence");
         }else 
         {
 
@@ -155,7 +162,7 @@ public class Player : MonoBehaviour
         _attack = isActive;
         if(isActive)
         {
-            //animacja albo efekt
+            _anim.SetTrigger("Attack");
         }else 
         {
 
@@ -166,6 +173,7 @@ public class Player : MonoBehaviour
         _jump = isActive;
         if(isActive)
         {
+            _anim.SetTrigger("Jump");
             _moveDistance = moveSettings.distance * 2;
         }else 
         {
@@ -178,7 +186,7 @@ public class Player : MonoBehaviour
         _earnScore = isActive;
         if(isActive)
         {
-
+            _anim.SetTrigger("Score");
         }else 
         {
 
