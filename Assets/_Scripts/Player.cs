@@ -5,6 +5,7 @@ using NaughtyAttributes;
 
 public class Player : MonoBehaviour
 {
+    public int[] testList;
     public int health;
     [SerializeField]
     private PlayerMove moveSettings = default;
@@ -29,7 +30,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        moveSettings.nextPoint.parent = null;
+        moveSettings.nextPoint.parent = GameManager.instance.moVePointsParent.transform;
         dance.nextDances = new Queue<int>();
         for(int i = 0; i < 4; i++)
         {
@@ -94,9 +95,21 @@ public class Player : MonoBehaviour
         _danceTime -= Time.deltaTime;
         if(_danceTime <= 0f)
         {
+            //testList = new int[dance.nextDances.Count];
+           // dance.nextDances.CopyTo(testList, dance.nextDances.Count);
+            foreach(int dance in dance.nextDances)
+            {
+                //Debug.Log((dance +1));
+            }
             dance.nextDances.Enqueue(Random.Range(0,4));
             SetDance(dance.nextDances.Dequeue());
+            foreach(int dance in dance.nextDances)
+            {
+                //Debug.Log("After: "+(dance +1));
+            }
             _danceTime = dance.danceTime;
+           // testList = new int[dance.nextDances.Count];
+            //dance.nextDances.CopyTo(testList, dance.nextDances.Count);
         }
     }
     private void SetDance(int danceID)
@@ -123,6 +136,7 @@ public class Player : MonoBehaviour
                 break;
         }
         UIManager.instance.SetDanceType(dance.nextDances);
+        //Debug.Log(Time.time +" Current dance: " + (danceID +1) +" next Dance: " + (dance.nextDances.Peek()+ 1));
     }
     private void DefenceDance(bool isActive)
     {
