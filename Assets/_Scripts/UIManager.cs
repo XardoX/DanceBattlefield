@@ -33,6 +33,7 @@ public class UIManager : MonoBehaviour
     public void SetDanceType(Queue<int> danceID)
     {
         int i = 0;
+        //Debug.Log("Count: " + danceID.Count);
         foreach(int dance in danceID)
         {
             _dances[i].text = (dance + 1).ToString();
