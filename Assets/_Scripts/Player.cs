@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public int health;
     public float timeToRecovery = 1f;
     [SerializeField]
-    private PlayerMove moveSettings = default;
+    private Move moveSettings = default;
     [SerializeField]
     private DanceTypes dance = default;
     private SpriteRenderer _renderer;
@@ -221,16 +221,7 @@ public class Player : MonoBehaviour
             
         }
     }
-    [System.Serializable]
-    private class PlayerMove
-    {
-    public float speed = 5f;
-    public float cooldown = 0.5f;
-    public float distance = 1.5f;
-    public Transform nextPoint = null;
-
-    public LayerMask tileLayer = default;
-    }
+    
 
     [System.Serializable]
     private class DanceTypes
@@ -239,3 +230,13 @@ public class Player : MonoBehaviour
         [ReadOnly] public Queue<int> nextDances;
     }
 }
+[System.Serializable]
+    public class Move
+    {
+    public float speed = 5f;
+    public float cooldown = 0.5f;
+    public float distance = 1.5f;
+    public Transform nextPoint = null;
+
+    public LayerMask tileLayer = default;
+    }

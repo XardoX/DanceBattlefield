@@ -5,7 +5,7 @@ using NaughtyAttributes;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private EnemyMove moveSettings = default;
+    [SerializeField] private Move moveSettings = default;
     [SerializeField] [ReadOnly]private float _moveTime = 0f;
 
     // Start is called before the first frame update
@@ -58,7 +58,7 @@ public class Enemy : MonoBehaviour
         {
             direction = Vector3.zero;
         }
-        Debug.Log(distanceToPlayer + " direction: "+ direction);
+        //Debug.Log(distanceToPlayer + " direction: "+ direction);
         if(_moveTime <= 0f)
         {
             if(Vector3.Distance(transform.position, moveSettings.nextPoint.position) <= .5f)
@@ -80,16 +80,5 @@ public class Enemy : MonoBehaviour
     public void EnemyCooldown()
     {
         _moveTime += moveSettings.cooldown * 2;
-    }
-
-    [System.Serializable]
-    private class EnemyMove
-    {
-    public float speed = 5f;
-    public float cooldown = 0.5f;
-    public float distance = 1.5f;
-    public Transform nextPoint = null;
-
-    public LayerMask tileLayer = default;
     }
 }
