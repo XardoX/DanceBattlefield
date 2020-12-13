@@ -45,8 +45,62 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Music
-    clip: {fileID: 8300000, guid: d2b5c036397f613499cacd7f1e87a3ce, type: 3}
+    clip: {fileID: 8300000, guid: 3c9ddd32e763bce42bbd71e955887783, type: 3}
     volume: 0.5
     pitch: 1
     source: {fileID: 0}
     loop: 1
+  - name: Button
+    clip: {fileID: 8300000, guid: 3aa2ff13da275804fb2d8f0e4a354e95, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Explosion
+    clip: {fileID: 8300000, guid: af6b1a8eb5707f045ad2b1114bdb195c, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Game Over
+    clip: {fileID: 8300000, guid: 1a92f827d1b73784eabf80296e75375e, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Gun
+    clip: {fileID: 8300000, guid: 1e0a156c47485af4b8065f41a78bff1b, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Laser
+    clip: {fileID: 8300000, guid: 93197d226bd4d9349a2325b9fad31d43, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Move
+    clip: {fileID: 8300000, guid: 167482c1cd965a141a3cee61e8736501, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Points
+    clip: {fileID: 8300000, guid: e5ef76d0e8d67df4d8019b8eafcd975b, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Push
+    clip: {fileID: 8300000, guid: 61fa2d0b7313e7448b02844bbf27aac5, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Shield
+    clip: {fileID: 8300000, guid: 35470c5baccabe44b9dc2e5d3b05aad1, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
