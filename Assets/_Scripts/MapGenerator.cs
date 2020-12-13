@@ -11,13 +11,6 @@ public class MapGenerator : MonoBehaviour
     {
         GenerateMap();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void GenerateMap()
     {
         Vector3 nextSpawn = new Vector3(mapSize.x * -tileDistance/2 + tileDistance/2, mapSize.y * -tileDistance/2 + tileDistance/2, 0f);

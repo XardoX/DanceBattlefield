@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -946080141
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 77e667f1b8dcb374aac63419239b5a65, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -125,6 +125,7 @@ MonoBehaviour:
   tile: {fileID: 21300000, guid: 77e667f1b8dcb374aac63419239b5a65, type: 3}
   highlited: {fileID: 21300000, guid: 545365939a30ecc40b3c07bf972c636d, type: 3}
   colorCooldown: {x: 0.5, y: 1}
+  occupied: 0
 --- !u!114 &2090769066
 MonoBehaviour:
   m_ObjectHideFlags: 0

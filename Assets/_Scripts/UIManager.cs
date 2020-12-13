@@ -6,6 +6,7 @@ using TMPro;
 using NaughtyAttributes;
 public class UIManager : MonoBehaviour
 {
+    public GameObject window;
     [SerializeField] private Material _danceParticlesMat = default;
     [SerializeField] private List<Sprite> _danceIcons = default;
     [SerializeField] private TextMeshProUGUI scoreText = null;
@@ -88,4 +89,15 @@ public class UIManager : MonoBehaviour
         scoreText.text = score.ToString();
     }
 
+    public void StartGame()
+    {
+        StartCoroutine(Cooldown());
+        window.SetActive(false);
+    }
+
+    IEnumerator Cooldown()
+    {
+        yield return new WaitForSecondsRealtime(3f);
+        Time.timeScale = 1f;
+    }
 }
