@@ -22,10 +22,10 @@ public class Player : MonoBehaviour
     private bool _moved;
     private float _danceTime;
     private float _moveDistance;
-    public static bool _defence;
-    public static bool _attack;
-    public static bool _jump;
-    public static bool _earnScore;
+    public bool _defence;
+    public bool _attack;
+    public bool _jump;
+    public bool _earnScore;
     private bool _immortality;
     public static Player instance;
     private void Awake() 
@@ -116,6 +116,7 @@ public class Player : MonoBehaviour
             dance.nextDances.Enqueue(Random.Range(0,4));
             nextDance = dance.nextDances.Dequeue();
             _danceTime = dance.danceTime;
+            UIManager.instance.SetDanceType(dance.nextDances, currentDance);
         }
     }
     private void SetDance(int danceID)
@@ -142,7 +143,6 @@ public class Player : MonoBehaviour
             default:
                 break;
         }
-        UIManager.instance.SetDanceType(dance.nextDances);
         //Debug.Log(Time.time +" Current dance: " + (danceID +1) +" next Dance: " + (dance.nextDances.Peek()+ 1));
     }
     private void DefenceDance(bool isActive)
@@ -209,15 +209,15 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.CompareTag("Enemy"))
+        if(other.CompareTag("Enemy") || other.CompareTag("Spider"))
         {
             if(_attack)
             {
-                other.GetComponent<Enemy>().KillEnemy();
+                other.GetComponent<IEnemy>().KillEnemy();
                 //addpoints
             }else 
             {
-                other.GetComponent<Enemy>().EnemyCooldown();
+                other.GetComponent<IEnemy>().EnemyCooldown();
                 if(!_defence)
                 {
                     LoseHealth();

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Tile
   - Enemy
+  - Laser
+  - Spider
   layers:
   - Default
   - TransparentFX
@@ -18,8 +20,8 @@ TagManager:
   - Background
   - Tile
   - Player
-  - 
-  - 
+  - Laser
+  - Spider
   - 
   - 
   - 

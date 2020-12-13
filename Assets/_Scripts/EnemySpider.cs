@@ -5,8 +5,9 @@ using NaughtyAttributes;
 using DG.Tweening;
 
 
-public class EnemySpider : MonoBehaviour
+public class EnemySpider : MonoBehaviour, IEnemy
 {
+    [SerializeField] private LayerMask playerLayer = default;
     [SerializeField] private SpriteRenderer laser = default;
     [SerializeField] private Move moveSettings = default;
     [SerializeField] private float rotationDuration = 0.5f;
@@ -22,6 +23,7 @@ public class EnemySpider : MonoBehaviour
 
     void Update()
     {
+        //Debug.DrawRay(transform.position, transform.up * moveSettings.distance, Color.green, .5f);
         if(_shooting)
         {
 
@@ -46,14 +48,19 @@ public class EnemySpider : MonoBehaviour
     private void Rotate()
     {
         rotationCount--;
-        rotationTime = rotationDuration;
+        rotationTime = rotationDuration * 1.5f;
+        _moved = true;
         transform.DORotate(Vector3.forward * 90f, rotationDuration, RotateMode.LocalAxisAdd).OnComplete(Scan);
     }
     private void Scan()
     {
-        if(Physics2D.Raycast(transform.position, transform.up, moveSettings.distance *3, LayerMask.NameToLayer("Player")))
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, moveSettings.distance *3);
+        //if(hit.collider != null) Debug.Log(hit.transform.name);
+        if(Physics2D.Raycast(transform.position, -transform.up, moveSettings.distance *3, playerLayer))
         {
             _shooting = true;
+            _moved = true;
+            _moveTime = moveSettings.cooldown;
             rotationCount = 4;
             Prepare();
         }
@@ -66,12 +73,13 @@ public class EnemySpider : MonoBehaviour
     }
     private void Shoot()
     {
+        laser.DOFade(1f, 0.1f);
         laser.GetComponent<Laser>().isActive = true;
         _shooting = false;
-        rotationTime = rotationDuration;
+        rotationTime = rotationDuration * 3;
         rotationCount = 4;
         _moved = false;
-        _moveTime = moveSettings.cooldown;
+        _moveTime = moveSettings.cooldown * 6;
     }
 
     private void Move()
@@ -121,8 +129,20 @@ public class EnemySpider : MonoBehaviour
                     moveSettings.nextPoint.position += direction * moveSettings.distance;
                     _moveTime = moveSettings.cooldown;
                     _moved = true;
+                    rotationCount = 4;
+                    rotationTime = rotationDuration;
                 }
             }
         }
+    }
+
+    public void KillEnemy()
+    {
+        Debug.Log("Spider Died");
+    }
+
+    public void EnemyCooldown()
+    {
+        _moveTime += moveSettings.cooldown * 2;
     }
 }
