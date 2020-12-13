@@ -8,7 +8,6 @@ public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
     
-    // Start is called before the first frame update
     void Awake()
     {
       foreach (Sound s in sounds)  
@@ -21,8 +20,6 @@ public class AudioManager : MonoBehaviour
           s.source.loop = s.loop;
       }
     }
-
-    // Update is called once per frame
 
     void Start ()
     {
