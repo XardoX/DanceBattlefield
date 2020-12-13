@@ -7,7 +7,7 @@ using DG.Tweening;
 public class Player : MonoBehaviour
 {
     public GameObject shield;
-    public static int currentDance;
+    public int currentDance;
     public int health;
     public float timeToRecovery = 1f;
     [SerializeField]
@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     private DanceTypes dance = default;
     [SerializeField]
     private Animator _anim = default;
-    private SpriteRenderer _renderer;
+    public SpriteRenderer _renderer;
     public int nextDance;
     private float _time;
     private float _recoveryTime;
@@ -116,7 +116,7 @@ public class Player : MonoBehaviour
             dance.nextDances.Enqueue(Random.Range(0,4));
             nextDance = dance.nextDances.Dequeue();
             _danceTime = dance.danceTime;
-            UIManager.instance.SetDanceType(dance.nextDances, currentDance);
+            UIManager.instance.SetDanceType(dance.nextDances, nextDance);
         }
     }
     private void SetDance(int danceID)
