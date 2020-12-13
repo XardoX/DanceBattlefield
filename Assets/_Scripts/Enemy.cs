@@ -62,7 +62,7 @@ public class Enemy : MonoBehaviour, IEnemy
         if(_moveTime <= 0f)
         {
             if(Vector3.Distance(transform.position, moveSettings.nextPoint.position) <= .5f)
-            {  
+            {
                 if(Physics2D.OverlapCircle(moveSettings.nextPoint.position + direction * moveSettings.distance, .2f, moveSettings.tileLayer))
                 {
                     moveSettings.nextPoint.position += direction * moveSettings.distance;
@@ -75,6 +75,7 @@ public class Enemy : MonoBehaviour, IEnemy
     public void KillEnemy()
     {
         Debug.Log("Enemy Died");
+        Destroy(this.gameObject);
     }
 
     public void EnemyCooldown()

@@ -139,6 +139,7 @@ public class EnemySpider : MonoBehaviour, IEnemy
     public void KillEnemy()
     {
         Debug.Log("Spider Died");
+        Destroy(this.gameObject);
     }
 
     public void EnemyCooldown()

@@ -35,22 +35,6 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (Player.instance._defence == true)
-        {
-            currentDanceBonusText.text = "One-time protection";
-        }
-        if (Player.instance._attack == true)
-        {
-            currentDanceBonusText.text = "Slay your enemy!";
-        }
-        if (Player.instance._jump == true)
-        {
-            currentDanceBonusText.text = "Jump 2 squares";
-        }
-        if (Player.instance._earnScore == true)
-        {
-            currentDanceBonusText.text = "Extra points";
-        }
     }
     public void SetDanceType(Queue<int> danceID)
     {
@@ -58,13 +42,32 @@ public class UIManager : MonoBehaviour
     }
     public void SetDanceType(Queue<int> danceID, int currentDance)
     {
+        _danceParticlesMat.mainTexture = _danceIcons[currentDance].texture;
+        currentDanceType.sprite = _danceIcons[currentDance];
+        
         int i = 0;
         // Debug.Log("Count: " + danceID.Count);
         foreach(int dance in danceID)
         {
             _dances[i].sprite = _danceIcons[dance];
-            _danceParticlesMat.mainTexture = _danceIcons[currentDance].texture;
             i++;
+        }
+        switch(currentDance)
+        {
+            case 0:
+            currentDanceBonusText.text = "One-time protection";
+                break;
+            case 1:
+            currentDanceBonusText.text = "Slay your enemy!";
+                break;
+            case 2:
+            currentDanceBonusText.text = "Jump 2 squares";
+                break;
+            case 3:
+            currentDanceBonusText.text = "Extra points";
+                break;
+            default:
+                break;
         }
     }
 

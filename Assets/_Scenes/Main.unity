@@ -160,7 +160,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4b89e0a6ea6721140b8931a5a1bccb46, type: 3}
   - {fileID: 21300000, guid: 65c6698d41188c442b0554689e8860df, type: 3}
   scoreText: {fileID: 2014037132}
-  currentDanceType: {fileID: 0}
+  currentDanceType: {fileID: 1716107995}
   _dancesParent: {fileID: 2114910922}
   _dances: []
   _heartsParent: {fileID: 1558247659}
@@ -6096,7 +6096,7 @@ MonoBehaviour:
     nextPoint: {fileID: 931063038}
     tileLayer:
       serializedVersion: 2
-      m_Bits: 512
+      m_Bits: 8704
   dance:
     danceTime: 1.5
   _anim: {fileID: 1700331500}
@@ -6355,6 +6355,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dance Tile
+      objectReference: {fileID: 0}
+    - target: {fileID: 6755774775335717519, guid: f6dd97a715113f145bcc7268f40df0ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8980804710717127612, guid: f6dd97a715113f145bcc7268f40df0ba,
         type: 3}
@@ -6721,7 +6726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.49411765}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
