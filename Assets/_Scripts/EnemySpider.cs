@@ -138,7 +138,9 @@ public class EnemySpider : MonoBehaviour, IEnemy
 
     public void KillEnemy()
     {
+        GameManager.instance.AddScore(200);
         Debug.Log("Spider Died");
+        GameManager.instance.currentEnemies.Remove(this.gameObject);
         Destroy(this.gameObject);
     }
 

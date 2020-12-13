@@ -74,7 +74,9 @@ public class Enemy : MonoBehaviour, IEnemy
     }
     public void KillEnemy()
     {
+        GameManager.instance.AddScore(150);
         Debug.Log("Enemy Died");
+        GameManager.instance.currentEnemies.Remove(this.gameObject);
         Destroy(this.gameObject);
     }
 

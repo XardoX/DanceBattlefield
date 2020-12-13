@@ -5,10 +5,15 @@ using NaughtyAttributes;
 
 public class GameManager : MonoBehaviour
 {
-    
+    public GameObject enemiesParent;
+    public GameObject tileParent;
+    public List<DanceTile> danceTiles;
     public Camera cam;
     public static GameManager instance;
     public GameObject movePointsParent;
+    public List<GameObject> currentEnemies;
+    public List<GameObject> enemiesPrefabs;
+    public int maxEnemies = 3;
 
     public Color[] tilesColors;
     private int _score;
@@ -24,15 +29,26 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 0f;
+        foreach(Transform child in tileParent.transform)
+        {
+            danceTiles.Add(child.GetComponent<DanceTile>());
+        }
     }
     void Update()
     {
-        
+        if(currentEnemies.Count < maxEnemies)
+        {
+            int tile = Random.Range(0, danceTiles.Count);
+            GameObject newEnemy = Instantiate(enemiesPrefabs[Random.Range(0,enemiesPrefabs.Count)] , danceTiles[tile].transform.position, danceTiles[tile].transform.rotation, enemiesParent.transform);
+            newEnemy.GetComponent<IEnemy>().EnemyCooldown();
+            currentEnemies.Add(newEnemy);
+        }
     }
 
     public void Defeat()
     {
-
+        UIManager.instance.ShowDefeatWindow();
+        AudioManager.instance.Play("Game Over");
     }
 
     public void AddScore(int value)

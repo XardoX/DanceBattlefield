@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
+    public GameObject shield;
     public static int currentDance;
     public int health;
     public float timeToRecovery = 1f;
@@ -81,7 +82,6 @@ public class Player : MonoBehaviour
                         moveSettings.nextPoint.position += new Vector3(Input.GetAxisRaw("Horizontal") *_moveDistance, 0f,0f);
                         _time = moveSettings.cooldown;
                         _moved = true; 
-                        GameManager.instance.Shake();
                         SetDance(nextDance);
                         if(_earnScore)
                         {
@@ -95,7 +95,6 @@ public class Player : MonoBehaviour
                         moveSettings.nextPoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical")*_moveDistance,0f);
                         _time = moveSettings.cooldown; 
                         _moved = true; 
-                        GameManager.instance.Shake();
                         SetDance(nextDance);
                         if(_earnScore)
                         {
@@ -113,6 +112,7 @@ public class Player : MonoBehaviour
         _danceTime -= Time.deltaTime;
         if(_danceTime <= 0f)
         {
+            GameManager.instance.Shake();
             dance.nextDances.Enqueue(Random.Range(0,4));
             nextDance = dance.nextDances.Dequeue();
             _danceTime = dance.danceTime;
@@ -148,6 +148,7 @@ public class Player : MonoBehaviour
     private void DefenceDance(bool isActive)
     {
         _defence = isActive;
+        shield.SetActive(isActive);
         if(isActive)
         {
             _anim.SetTrigger("Defence");
@@ -196,6 +197,7 @@ public class Player : MonoBehaviour
     {
         if(!_immortality)
         {
+            AudioManager.instance.Play("Button");
             _immortality = true;
             _recoveryTime = timeToRecovery;
             health--;

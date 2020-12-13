@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using NaughtyAttributes;
+using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
+    public GameObject defeatWindow;
+    public TextMeshProUGUI endscore;
     public GameObject window;
     [SerializeField] private Material _danceParticlesMat = default;
     [SerializeField] private List<Sprite> _danceIcons = default;
@@ -87,6 +90,7 @@ public class UIManager : MonoBehaviour
     public void SetScore(int score)
     {
         scoreText.text = score.ToString();
+        endscore.text = score.ToString();
     }
 
     public void StartGame()
@@ -99,5 +103,15 @@ public class UIManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(3f);
         Time.timeScale = 1f;
+    }
+
+    public void ShowDefeatWindow()
+    {
+        defeatWindow.SetActive(true);
+        Time.timeScale = 0f;
+    }
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

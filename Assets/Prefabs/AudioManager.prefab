@@ -52,7 +52,7 @@ MonoBehaviour:
     loop: 1
   - name: Button
     clip: {fileID: 8300000, guid: 3aa2ff13da275804fb2d8f0e4a354e95, type: 3}
-    volume: 0.5
+    volume: 0.732
     pitch: 1
     source: {fileID: 0}
     loop: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
     loop: 0
   - name: Game Over
     clip: {fileID: 8300000, guid: 1a92f827d1b73784eabf80296e75375e, type: 3}
-    volume: 0.5
+    volume: 0.821
     pitch: 1
     source: {fileID: 0}
     loop: 0
